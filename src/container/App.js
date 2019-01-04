@@ -1,5 +1,12 @@
 import React, { Component } from "react";
+<<<<<<< HEAD:src/App.js
 import { Table } from "reactable";
+=======
+import JSONTree from "react-json-tree";
+import Detail from "../component/detail"
+
+import './app.css';
+>>>>>>> refactor: left right design with grid:src/container/App.js
 
 /* global chrome */
 function connectToBackground() {
@@ -45,7 +52,20 @@ class App extends Component {
   }
 
   render() {
-    return <div className="App">{this.renderEvents()}</div>;
+    return (
+      <div className="App">
+        <h1 className="header">React Lifecycle Tracer</h1>
+        <table className="table">
+          <tr>
+            <th>Component</th>
+            <th>Lifecycle Method</th>
+            <th>State</th>
+          </tr>
+          {this.renderEvents()}
+        </table>
+        <Detail className="detail"/>
+      </div>
+    );
   }
 }
 
