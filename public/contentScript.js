@@ -1,10 +1,9 @@
-
 /* global chrome */
 
 chrome.runtime.connect({
   name: "content-script"
 });
 
-window.addEventListener("message", event =>
-  chrome.runtime.sendMessage(event.data)
-);
+window.addEventListener("message", function(event) {
+  chrome.runtime.sendMessage(event.data);
+});

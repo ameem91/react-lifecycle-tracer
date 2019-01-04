@@ -2,10 +2,10 @@
 
 const connections = {};
 
-chrome.runtime.onConnect.addListener(port => {
+chrome.runtime.onConnect.addListener(function(port) {
   // The original connection event doesn't include the tab ID of the
   // DevTools page, so we need to send it explicitly
-  const extensionListener = message => {
+  const extensionListener = function(message) {
     if (message.name === "INIT") {
       connections[message.tabId] = port;
       return;
@@ -14,7 +14,7 @@ chrome.runtime.onConnect.addListener(port => {
 
   port.onMessage.addListener(extensionListener);
 
-  port.onDisconnect.addListener(port => {
+  port.onDisconnect.addListener(function(port) {
     port.onMessage.removeListener(extensionListener);
 
     const tabs = Object.keys(connections);
@@ -28,7 +28,7 @@ chrome.runtime.onConnect.addListener(port => {
 });
 
 // Receive message from content script and relay to the devTools page
-chrome.runtime.onMessage.addListener((message, sender) => {
+chrome.runtime.onMessage.addListener(function(message, sender) {
   if (sender.tab) {
     const tabId = sender.tab.id;
     if (tabId in connections) {
