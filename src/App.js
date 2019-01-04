@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import JSONTree from "react-json-tree";
+import { Table } from "reactable";
 
 /* global chrome */
 function connectToBackground() {
@@ -26,15 +26,13 @@ class App extends Component {
   }
 
   renderEvents() {
-    return this.state.events.map((event, index) => (
-      <tr key={index}>
-        <td>{event.component}</td>
-        <td>{event.method}</td>
-        <td>
-          <JSONTree data={event.state} invertTheme={true}/>
-        </td>
-      </tr>
-    ));
+    const data = this.state.events.map((event, index) => ({
+      index,
+      component: event.component,
+      method: event.method,
+    }));
+
+    return <Table data={data} filterable={['method', 'component']}/>
   }
 
   componentDidMount() {
@@ -47,19 +45,7 @@ class App extends Component {
   }
 
   render() {
-    return (
-      <div className="App">
-        <h1>React Lifecycle Tracer</h1>
-        <table>
-          <tr>
-            <th>Component</th>
-            <th>Lifecycle Method</th>
-            <th>State</th>
-          </tr>
-          {this.renderEvents()}
-        </table>
-      </div>
-    );
+    return <div className="App">{this.renderEvents()}</div>;
   }
 }
 
