@@ -1,15 +1,19 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
-  "icons": [
+  "name": "React Lifecycle Tracer",
+  "version": "1.0",
+  "minimum_chrome_version": "10.0",
+  "manifest_version": 2,
+  "description": "An extension that traces lifecycle methods in your React components.",
+  "devtools_page": "devtools.html",
+  "content_scripts": [
     {
-      "src": "favicon.ico",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "matches": ["<all_urls>"],
+      "js": ["contentScript.js"]
     }
   ],
-  "start_url": ".",
-  "display": "standalone",
-  "theme_color": "#000000",
-  "background_color": "#ffffff"
+  "background": {
+    "scripts": ["background.js"]
+  },
+  "icons": {},
+  "permissions": ["file:///*", "http://*/*", "https://*/*"]
 }
