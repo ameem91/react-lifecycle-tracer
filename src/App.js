@@ -1,4 +1,5 @@
-import React, { Component } from 'react';
+import React, { Component } from "react";
+import JSONTree from "react-json-tree";
 
 /* global chrome */
 function connectToBackground() {
@@ -14,7 +15,6 @@ function connectToBackground() {
   return connection;
 }
 class App extends Component {
-
   constructor(props) {
     super(props);
 
@@ -30,8 +30,9 @@ class App extends Component {
       <tr key={index}>
         <td>{event.component}</td>
         <td>{event.method}</td>
-        <td>{event.state}</td>
-        <td>{event.props}</td>
+        <td>
+          <JSONTree data={event.state} invertTheme={true}/>
+        </td>
       </tr>
     ));
   }
@@ -54,7 +55,6 @@ class App extends Component {
             <th>Component</th>
             <th>Lifecycle Method</th>
             <th>State</th>
-            <th>Props</th>
           </tr>
           {this.renderEvents()}
         </table>
