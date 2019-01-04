@@ -1,12 +1,8 @@
 import React, { Component } from "react";
-<<<<<<< HEAD:src/App.js
 import { Table } from "reactable";
-=======
-import JSONTree from "react-json-tree";
 import Detail from "../component/detail"
 
 import './app.css';
->>>>>>> refactor: left right design with grid:src/container/App.js
 
 /* global chrome */
 function connectToBackground() {
