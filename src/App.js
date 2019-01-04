@@ -30,6 +30,8 @@ class App extends Component {
       <tr key={index}>
         <td>{event.component}</td>
         <td>{event.method}</td>
+        <td>{event.state}</td>
+        <td>{event.props}</td>
       </tr>
     ));
   }
@@ -51,6 +53,8 @@ class App extends Component {
           <tr>
             <th>Component</th>
             <th>Lifecycle Method</th>
+            <th>State</th>
+            <th>Props</th>
           </tr>
           {this.renderEvents()}
         </table>
