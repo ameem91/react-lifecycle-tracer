@@ -49,8 +49,7 @@ class App extends Component {
 
   render() {
     return (
-      <div className="App">
-        <h1 className="header">React Lifecycle Tracer</h1>
+      <div className="app">
         <table className="table">
           <tr>
             <th>Component</th>

@@ -9,10 +9,10 @@ class Detail extends Component {
   }
 
   render() {
-    const { componentName, state, props } = this.props;
+    const { componentName, state, props, className } = this.props;
     const { isEmpty } = this
     return (
-      <div>
+      <div className={className}>
         <h2>{componentName}</h2>
         { 
           isEmpty(state) && <JSONTree data={state} invertTheme={true}/>
@@ -27,13 +27,15 @@ class Detail extends Component {
 Detail.defaultProps = {
   props: {},
   state: {},
-  componentName: "I AM NOTHING"
+  componentName: "I AM NOTHING",
+  className: ""
 };
 
 Detail.propTypes = {
   props: PropTypes.object,
   state: PropTypes.object,
   componentName: PropTypes.string,
+  className: PropTypes.string,
 };
 
 export default Detail;
