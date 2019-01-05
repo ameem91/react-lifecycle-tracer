@@ -1,17 +1,4 @@
 .app {
   display: grid;
-  grid: "header header" max-content 
-        "events detail" max-content;
-}
-
-.header {
-  grid-area: header;
-}
-
-.table {
-  grid-area: events;
-}
-
-.detail {
-  grid-area: detail;
+  grid-template-columns: 3fr 2fr;
 }

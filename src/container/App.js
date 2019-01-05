@@ -1,8 +1,8 @@
 import React, { Component } from "react";
-import { Table } from "reactable";
-import Detail from "../component/detail"
+import Detail from "../component/detail";
+import Events from "../component/events";
 
-import './app.css';
+import "./app.css";
 
 /* global chrome */
 function connectToBackground() {
@@ -22,43 +22,48 @@ class App extends Component {
     super(props);
 
     this.state = {
-      events: []
+      events: [],
+      selectedRowIndex: -1
     };
 
     this.renderEvents = this.renderEvents.bind(this);
+    this.handleRowClick = this.handleRowClick.bind(this);
+  }
+
+  handleRowClick(index) {
+    this.setState({ selectedRowIndex: index });
   }
 
   renderEvents() {
-    const data = this.state.events.map((event, index) => ({
-      index,
+    const { events } = this.state;
+    const data = events.map((event, index) => ({
+      id: events.length - index,
       component: event.component,
-      method: event.method,
+      method: event.method
     }));
 
-    return <Table data={data} filterable={['method', 'component']}/>
+    return <Events events={data} onRowClick={this.handleRowClick} />;
   }
 
   componentDidMount() {
     const connection = connectToBackground();
     connection.onMessage.addListener(message => {
       if (message.name === "__REACT_LIFECYCLE_TRACER_EVENT__") {
-        this.setState({ events: [...this.state.events, message.payload] });
+        this.setState({ events: [message.payload, ...this.state.events] });
       }
     });
   }
 
   render() {
+    const { selectedRowIndex, events } = this.state;
+    const selectedEvent = events[selectedRowIndex];
+    const state = selectedEvent && selectedEvent.state;
+    const componentName = selectedEvent && selectedEvent.component;
+
     return (
       <div className="app">
-        <table className="table">
-          <tr>
-            <th>Component</th>
-            <th>Lifecycle Method</th>
-            <th>State</th>
-          </tr>
-          {this.renderEvents()}
-        </table>
-        <Detail className="detail"/>
+        {this.renderEvents()}
+        <Detail state={state} componentName={componentName} />
       </div>
     );
   }

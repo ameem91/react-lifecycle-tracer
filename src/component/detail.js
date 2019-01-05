@@ -1,23 +1,30 @@
 import React, { Component } from "react";
 import PropTypes from "prop-types";
-import JSONTree from "react-json-tree";
+import ReactJson from "react-json-view";
+import cn from "classnames";
+import "./detail.css";
 
 class Detail extends Component {
-
-  isEmpty = (item) =>{
-    return Object.keys(item).length > 0
-  }
-
   render() {
     const { componentName, state, props, className } = this.props;
-    const { isEmpty } = this
     return (
-      <div className={className}>
+      <div className={cn('detail', className)}>
         <h2>{componentName}</h2>
-        { 
-          isEmpty(state) && <JSONTree data={state} invertTheme={true}/>
-        }{
-          isEmpty(props) && <JSONTree data={props} invertTheme={true}/>
+        {
+          <ReactJson
+            src={state}
+            name="state"
+            theme="bright:inverted"
+            enableClipboard={false}
+          />
+        }
+        {
+          <ReactJson
+            src={props}
+            name="props"
+            theme="bright:inverted"
+            enableClipboard={false}
+          />
         }
       </div>
     );
@@ -25,8 +32,6 @@ class Detail extends Component {
 }
 
 Detail.defaultProps = {
-  props: {},
-  state: {},
   componentName: "I AM NOTHING",
   className: ""
 };
@@ -35,7 +40,7 @@ Detail.propTypes = {
   props: PropTypes.object,
   state: PropTypes.object,
   componentName: PropTypes.string,
-  className: PropTypes.string,
+  className: PropTypes.string
 };
 
 export default Detail;
