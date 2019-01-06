@@ -6,40 +6,40 @@ import "./detail.css";
 
 class Detail extends Component {
   render() {
-    const { componentName, state, props, className } = this.props;
+    const { componentName, methodName, state, props, className } = this.props;
     return (
-      <div className={cn('detail', className)}>
-        <h2>{componentName}</h2>
-        {
+      <div className={cn("detail", className)}>
+        {componentName && (
+          <h2 className="detail__header">{`${componentName}- ${methodName}`}</h2>
+        )}
+        {state && (
           <ReactJson
             src={state}
             name="state"
             theme="bright:inverted"
             enableClipboard={false}
+            style={{ "font-family": "inherit" }}
           />
-        }
-        {
+        )}
+        {props && (
           <ReactJson
             src={props}
             name="props"
             theme="bright:inverted"
             enableClipboard={false}
+            style={{ "font-family": "inherit" }}
           />
-        }
+        )}
       </div>
     );
   }
 }
 
-Detail.defaultProps = {
-  componentName: "I AM NOTHING",
-  className: ""
-};
-
 Detail.propTypes = {
   props: PropTypes.object,
   state: PropTypes.object,
   componentName: PropTypes.string,
+  methodName: PropTypes.string,
   className: PropTypes.string
 };
 

@@ -18,12 +18,14 @@ const columns = [
     filterable: false
   }
 ];
+
 const Events = ({ events, onRowClick, className }) => {
   return (
-    <div className={cn('events', className)}>
+    <div className={cn("events", className)}>
       <ReactTable
-        data={events}
+        className="-striped -highlight"
         columns={columns}
+        data={events}
         filterable={true}
         getTrProps={(state, rowInfo) => {
           return {
@@ -38,6 +40,12 @@ const Events = ({ events, onRowClick, className }) => {
         noDataText="No events found"
         showPageJump={false}
         showPageSizeOptions={false}
+        sorted={[
+          {
+            id: "id",
+            desc: true
+          }
+        ]}
         sortable={false}
       />
     </div>

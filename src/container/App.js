@@ -37,7 +37,7 @@ class App extends Component {
   renderEvents() {
     const { events } = this.state;
     const data = events.map((event, index) => ({
-      id: events.length - index,
+      id: index,
       component: event.component,
       method: event.method
     }));
@@ -49,7 +49,7 @@ class App extends Component {
     const connection = connectToBackground();
     connection.onMessage.addListener(message => {
       if (message.name === "__REACT_LIFECYCLE_TRACER_EVENT__") {
-        this.setState({ events: [message.payload, ...this.state.events] });
+        this.setState({ events: [...this.state.events, message.payload] });
       }
     });
   }
@@ -59,11 +59,16 @@ class App extends Component {
     const selectedEvent = events[selectedRowIndex];
     const state = selectedEvent && selectedEvent.state;
     const componentName = selectedEvent && selectedEvent.component;
+    const methodName = selectedEvent && selectedEvent.method;
 
     return (
       <div className="app">
         {this.renderEvents()}
-        <Detail state={state} componentName={componentName} />
+        <Detail
+          state={state}
+          componentName={componentName}
+          methodName={methodName}
+        />
       </div>
     );
   }
