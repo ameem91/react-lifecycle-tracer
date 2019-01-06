@@ -19,3 +19,5 @@ npm run build
 * Select the build folder for this project
 * Open the "React Lifecycle Tracer" tab in devtools for the application you wish to trace
 
+### Sample
+![image](https://user-images.githubusercontent.com/1508876/50738330-b889f800-11a0-11e9-82d7-98d4aa091eaa.png)
