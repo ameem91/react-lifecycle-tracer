@@ -10,9 +10,9 @@ A chrome extension for tracing React lifecycle methods.
 npm install
 npm run build
 ```
-### Add Babel Plugin to your project
+### Add Babel Plugin
 
-For this extension to work, you will need to add the [react-lifecycle-tracer-plugin](https://github.com/EBSCOIS/react-lifecycle-tracer-plugin) Babel plugin to your project.
+For this extension to work, you will need to add the [react-lifecycle-tracer-plugin](https://github.com/EBSCOIS/react-lifecycle-tracer-plugin) Babel plugin to any project you wish to trace.
 
 ### Install Chrome Extension
 
