@@ -11,9 +11,11 @@ npm install
 npm run build
 ```
 
-### Install Chrome Extensions
+### Install Chrome Extension
 
-* Navigate to [chrome extensions](chrome://extensions/)
+* Navigate to chrome extensions (chrome://extensions/)
 * Make sure developer mode it runed on (upper right hand corner)
 * Click "load unpacked" button
 * Select the build folder for this project
+* Open the "React Lifecycle Tracer" tab in devtools for the application you wish to trace
+
