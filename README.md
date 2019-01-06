@@ -1,6 +1,6 @@
-react-lifecycle-tracer is the chrome extension to view react life cycle events. 
+# react-lifecycle-tracer 
 
-It needs to be used in conjunction with [react-lifecycle-tracer-plugin](https://github.com/EBSCOIS/react-lifecycle-tracer-plugin)
+A chrome extension for tracing React lifecycle methods.
 
 ## Getting Started
 
@@ -10,6 +10,9 @@ It needs to be used in conjunction with [react-lifecycle-tracer-plugin](https://
 npm install
 npm run build
 ```
+### Add Babel Plugin to your project
+
+For this extension to work, you will need to add the [react-lifecycle-tracer-plugin](https://github.com/EBSCOIS/react-lifecycle-tracer-plugin) Babel plugin to your project.
 
 ### Install Chrome Extension
 
@@ -19,5 +22,5 @@ npm run build
 * Select the build folder for this project
 * Open the "React Lifecycle Tracer" tab in devtools for the application you wish to trace
 
-### Sample
+## Sample
 ![image](https://user-images.githubusercontent.com/1508876/50738330-b889f800-11a0-11e9-82d7-98d4aa091eaa.png)
