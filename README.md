@@ -12,7 +12,7 @@ npm run build
 ```
 ### Add Babel Plugin
 
-For this extension to work, you will need to add the [react-lifecycle-tracer-plugin](https://github.com/EBSCOIS/react-lifecycle-tracer-plugin) Babel plugin to any project you wish to trace.
+For this extension to work, you will need to add the [babel-plugin-react-lifecycle-tracer](https://github.com/ameem91/babel-plugin-react-lifecycle-tracer) Babel plugin to any project you wish to trace.
 
 ### Install Chrome Extension
 
